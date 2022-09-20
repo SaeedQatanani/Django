@@ -3,15 +3,15 @@ from django.shortcuts import render, redirect
 def index(request):
     return render(request, 'index.html')
 
-def show(request):
-    context = {
-        'name' : request.POST['name'],
-        'location' : request.POST['location'],
-        'language' : request.POST['language'],
-        'comment' : request.POST['comment'],
-    }
-    
-    return render(request, 'result.html', context)
+def process(request):
+    request.session['name'] = request.POST['name']
+    request.session['location'] = request.POST['location']
+    request.session['language'] = request.POST['language']
+    request.session['comment'] = request.POST['comment']
+    return redirect('/final_result')
+
+def show(request):    
+    return render(request, 'result.html')
 
 
 

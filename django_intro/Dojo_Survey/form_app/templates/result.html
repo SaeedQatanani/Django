@@ -13,19 +13,19 @@
         <h1>Submitted Info</h1>
         <div class="line">
             <p>Name:</p> 
-            <p>{{ name }}</p>
+            <p>{{ request.session.name }}</p>
         </div>
         <div class="line">
             <p>Dojo Location:</p> 
-            <p>{{ location }}</p>
+            <p>{{ request.session.location }}</p>
         </div>
         <div class="line">
             <p>Favorite language:</p> 
-            <p>{{ language }}</p>
+            <p>{{ request.session.language }}</p>
         </div>
         <div class="line">
             <p>Comment:</p> 
-            <p>{{ comment }}</p>
+            <p>{{ request.session.comment }}</p>
         </div>
         <form action="\">
             <input type="submit" value="Go back" class="button">
