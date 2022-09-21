@@ -9,3 +9,7 @@ def count(request):
 def destroy(request):
     del request.session['counter']
     return redirect('/')
+
+def addtwice(request):
+    request.session['counter'] += 1
+    return redirect('/')

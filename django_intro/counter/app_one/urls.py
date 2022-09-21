@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.count),
-    path('destroy_session/', views.destroy)
+    path('destroy_session/', views.destroy),
+    path('add_two/', views.addtwice)
 ]
