@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
     <header>
         <h4><strong>Your GOLD: </strong></h4>
@@ -54,10 +56,11 @@
     <footer>
         <h2>Activities:</h2>
         <div class="activities">
-            <p class="activity" style="color: {{request.session.color}};">You entered a {{ request.session.location }} and earned {{ request.session.earned_num }} gold. ({{ request.session.time }})</p>
-            <p class="activity" style="color: {{request.session.color}};">You completed a {{ request.session.location }} and earned {{ request.session.earned_num }} gold. ({{ request.session.time }})</p>
-            <p class="activity" style="color: {{request.session.color}};">You failed a {{ request.session.location }} and lost {{ request.session.earned_num }} gold. OUCH! ({{ request.session.time }})</p>
+            {% for element in request.session.message %}
+            <p class="activity" style="color: {{element.1}};">{{element.0}}</p>
+            {% endfor %}
         </div>
     </footer>
 </body>
+
 </html>
