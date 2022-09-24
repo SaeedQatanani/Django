@@ -34,8 +34,8 @@ def process(request):
     else:
         request.session['earned_num'] = random.randint(10, 20)
         request.session['gold'] += request.session['earned_num']
-        request.session['message'].insert(0, ['You entered a ' + request.session['location'] 
-                        + ' and earned ' 
+        request.session['message'].insert(0, ['You entered a ' 
+                        + request.session['location'] + ' and earned ' 
                         + str(request.session['earned_num']) + ' gold. '+'(' 
                         + str(request.session['time'])+')', 'green'])
 
