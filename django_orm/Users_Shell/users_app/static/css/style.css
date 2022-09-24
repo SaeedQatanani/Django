@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-family: sans-serif;
+}
+
+h1, h2 {
+    height: 70px;
+    padding: 1%;
+    text-align: center;
+}
+
+#maintable {
+    width: 90%;
+    margin: auto;
+}
+
+.border {
+    width: 95%;
+    height: 5px;
+    margin: 3% auto 1%;
+    background-color: black;
+    border-radius: 50px;
+}
+
+.row {
+    width: 80%;
+}
+
+form {
+    margin-left: 20%;
+}
+
+#add {
+    margin: 3%;
+    margin-left: 30%;
+}
