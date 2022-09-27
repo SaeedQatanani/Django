@@ -21,6 +21,7 @@
         {% endfor %}
     </ul>
     <div>
+        {% if books|length != this_author_books|length %}
         <form action="add_book/" method="post">
         {% csrf_token %}
         <select name="books" id="books" class="form-select">
@@ -32,6 +33,7 @@
         </select>
         <button type="submit" class="btn btn-primary">Add</button>
         </form>
+        {% endif %}
     </div>
 </body>
 </html>
