@@ -1,0 +1,20 @@
+body {
+    padding: 2%;
+}
+
+h2 {
+    margin-left: 40%;
+}
+
+form {
+    margin-bottom: 5%;
+}
+
+button {
+    margin: 1%;
+}
+
+select {
+    width: 40%;
+    height: 35px;
+}
