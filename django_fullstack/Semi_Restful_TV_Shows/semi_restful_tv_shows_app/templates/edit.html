@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semi Restful TV Shows</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>Edit Show {{id}}</h2>
+    <form action="/shows/{{id}}/update/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" type="text" name="title" id="title">
+        </div>
+        <div class="form-group">
+            <label for="network">Network</label>
+            <input class="form-control" type="text" name="network" id="network">
+        </div>
+        <div class="form-group">
+            <label for="release_date">Release Date</label>
+            <input class="form-control" type="date" name="release_date" id="release_date">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input class="form-control" type="text" name="description" id="description">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    <p><a href="">Go to Show</a></p>
+</body>
+</html>
