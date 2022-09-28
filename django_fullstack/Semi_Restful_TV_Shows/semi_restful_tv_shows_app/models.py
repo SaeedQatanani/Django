@@ -1,6 +1,5 @@
 from django.db import models
-import time
-import datetime
+from datetime import datetime
 
 class ShowManager(models.Manager):
     def validator(self, postData):
@@ -15,7 +14,7 @@ class ShowManager(models.Manager):
         if postData['description'] :
             if len(postData['description']) < 10:
                 errors["description"] = "A show's description should be at least ten characters"
-        if postData['release_date'] > datetime.date.today().isoformat():
+        if datetime.strptime(postData['release_date'], '%Y-%m-%d') >= datetime.today():
             errors["release_date"] = "A show's release date should be in the past"
         return errors
 
