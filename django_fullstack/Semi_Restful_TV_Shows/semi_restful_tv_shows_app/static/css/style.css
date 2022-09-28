@@ -6,8 +6,25 @@ body {
 #actions {
     margin: 0;
     padding: 0;
-    list-style-type: '|';
+    list-style-type: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#actions li {
+    width: 50%;
+}
+
+#link {
+    margin-left: 90%;
+    text-decoration: underline;
+}
+
+#actions_container {
+    width: 15%;
+}
+
+#inedit_link {
+    margin-top: 1%;
 }

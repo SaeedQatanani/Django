@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <p><a href="/shows/" id="link">Go Back</a></p>
     <h2>Add a New Show</h2>
     <form action="/shows/create/" method="post">
         {% csrf_token %}
@@ -31,6 +32,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
-    <p><a href="">Go Back</a></p>
+    
 </body>
 </html>

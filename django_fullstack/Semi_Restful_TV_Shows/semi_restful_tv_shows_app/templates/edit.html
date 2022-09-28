@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <p><a href="/shows/" id="link">Go Back</a></p>
     <h2>Edit Show {{id}}</h2>
     <form action="/shows/{{id}}/update/" method="post">
         {% csrf_token %}
@@ -31,6 +32,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
-    <p><a href="">Go to Show</a></p>
+    <p id="inedit_link"><a href="/shows/{{id}}/">Go to Show</a></p>
 </body>
 </html>
