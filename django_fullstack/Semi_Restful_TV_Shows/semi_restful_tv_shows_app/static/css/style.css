@@ -12,8 +12,13 @@ body {
     align-items: center;
 }
 
-#actions li {
-    width: 50%;
+#show_actions {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #link {

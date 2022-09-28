@@ -18,9 +18,9 @@
         <li class="list-group-item list-group-item-secondary">Release Date: {{ show.release_date }}</li>
         <li class="list-group-item list-group-item-secondary">Description: {{ show.description }}</li>
     </ul><br>
-    <p>Last update:{{ show.updated_at }}</p>
+    <p>Last update: {{ show.updated_at }}</p>
     <div id="actions_container">
-        <ul id="actions" class="list-group">
+        <ul id="actions">
             <li><a href="/shows/{{ show.id }}/edit/">Edit</a></li>
             <li>|</li>
             <li><a href="/shows/{{ show.id }}/destroy/">Delete</a></li>
