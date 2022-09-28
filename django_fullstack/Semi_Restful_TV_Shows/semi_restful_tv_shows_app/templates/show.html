@@ -16,7 +16,9 @@
         <li class="list-group-item list-group-item-secondary">Title: {{ show.title }}</li>
         <li class="list-group-item list-group-item-secondary">Network: {{ show.network }}</li>
         <li class="list-group-item list-group-item-secondary">Release Date: {{ show.release_date }}</li>
-        <li class="list-group-item list-group-item-secondary">Description: {{ show.description }}</li>
+        {% if show.description %}
+            <li class="list-group-item list-group-item-secondary">Description: {{ show.description }}</li>
+        {% endif %}
     </ul><br>
     <p>Last update: {{ show.updated_at }}</p>
     <div id="actions_container">

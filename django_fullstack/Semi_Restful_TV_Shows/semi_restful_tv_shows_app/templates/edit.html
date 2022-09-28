@@ -16,22 +16,29 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="title">Title</label>
-            <input class="form-control" type="text" name="title" id="title">
+            <input class="form-control" type="text" name="title" id="title" value="{{ show.title }}">
         </div>
         <div class="form-group">
             <label for="network">Network</label>
-            <input class="form-control" type="text" name="network" id="network">
+            <input class="form-control" type="text" name="network" id="network" value="{{ show.network }}">
         </div>
         <div class="form-group">
             <label for="release_date">Release Date</label>
-            <input class="form-control" type="date" name="release_date" id="release_date">
+            <input class="form-control" type="date" name="release_date" id="release_date" value="{{ show_release_date }}">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <input class="form-control" type="text" name="description" id="description">
+            <input class="form-control" type="text" name="description" id="description" value="{{ show.description }}">
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
     <p id="inedit_link"><a href="/shows/{{id}}/">Go to Show</a></p>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </body>
 </html>
