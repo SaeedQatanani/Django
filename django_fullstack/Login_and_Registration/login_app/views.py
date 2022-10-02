@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import User
-# import bcrypt
+import bcrypt
 
 def index(request):
     return render(request, 'index.html')
@@ -14,8 +14,7 @@ def add_user(request):
         return redirect('/')
     else:
         password = request.POST['password']
-        # pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
-        pw_hash = password
+        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
         User.objects.create(first_name = request.POST['first_name'],
                             last_name = request.POST['last_name'],
                             birthday = request.POST['birthday'],
@@ -27,9 +26,10 @@ def add_user(request):
         return redirect('/success')
 
 def render_success(request):
-    if request.session['first_name']:
+    try:
+        request.session['first_name']
         return render(request, 'success.html')
-    else:
+    except:
         return redirect('/')
 
 def log_out(request):
@@ -47,9 +47,16 @@ def log_in(request):
         user = User.objects.filter(email = request.POST['login_email'])
         if user:
             logged_user = user[0]
-            if request.POST['login_password'] == logged_user.password:
+            if bcrypt.checkpw(request.POST['login_password'].encode(), logged_user.password.encode()):
                 request.session['first_name'] = logged_user.first_name
                 messages.success(request, 'Successfully logged in!')
                 return redirect('/success')
+            else:
+                messages.error(request, 'Wrong Password! Try again')
         return redirect('/')
+
+def delete_all(request):
+    for user in User.objects.all():
+        user.delete()
+    return redirect('/')
 
