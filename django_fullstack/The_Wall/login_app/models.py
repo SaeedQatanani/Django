@@ -19,9 +19,9 @@ class UserManager(models.Manager):
                 errors["missing_field_last_name"] = "Please insert a last name."
             else:
                 if len(postData['last_name']) < 2:
-                    errors["last_name_length"] = "Last name should be at least two characters!"
+                    errors["last_name"] = "Last name should be at least two characters!"
                 if  str(postData['last_name']).isalpha() == False:
-                    errors['last_name_characters'] = "The last name should contain characters only."
+                    errors['last_name'] = "The last name should contain characters only."
 
             if not postData['email']:
                 errors["missing_field_email"] = "Please insert an E-mail."
@@ -55,12 +55,15 @@ class UserManager(models.Manager):
             else:
                 if not EMAIL_REGEX.match(postData['login_email']):
                     errors['login_email_validation'] = "Invalid email address!"
+                flag = False
                 for user in User.objects.all():
-                    flag = False
+                    print(postData['login_email'])
+                    print(user.email)
                     if user.email == postData['login_email']:
                         flag = True
                         break
                 if flag == False:
+                    print('*'*30)
                     errors["login_email_exsistance"] = "This E-mail has not registered yet! Complete the registration form."
 
             if not postData['login_password']:
