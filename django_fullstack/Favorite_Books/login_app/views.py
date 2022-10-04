@@ -22,6 +22,7 @@ def add_user(request):
                             password = pw_hash
                             )
         request.session['first_name'] = request.POST['first_name']
+        request.session['id'] = User.objects.get(email = request.POST['email']).id
         return redirect('/success')
 
 def render_success(request):

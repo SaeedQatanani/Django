@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="navbar navbar-primary bg-dark">
-        <h2>Welcome, {{ request.session.first_name }}!</h2>
+        <h2>Welcome, <a href="/books/show_user_profile/">{{ request.session.first_name }}</a>!</h2>
         <p class="link_container"><a href="/logout/" class="navbar_link">Log out</a></p>
     </header>
     <main>

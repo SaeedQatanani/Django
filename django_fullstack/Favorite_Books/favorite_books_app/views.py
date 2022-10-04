@@ -2,7 +2,6 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from login_app.models import User
 from .models import *
-import bcrypt
 
 def show_profile(request):
     try:
@@ -31,9 +30,11 @@ def upload_book(request):
     return redirect('/books')
 
 def display_book(request, id):
+    book = Book.objects.get(id = id)
     context ={
-        'book' : Book.objects.get(id = id),
-        'users_who_like' : Book.objects.get(id = id).users_who_like.all(),
+        'book' : book,
+        'users_who_like' : book.users_who_like.all(),
+        'user' : User.objects.get(id = request.session['id']),
     }
     return render(request, 'book_info.html', context)
 
@@ -61,5 +62,20 @@ def add_to_favorites(request, id):
         logged_user = user[0]
         uploaded_book = Book.objects.get(id =id)
         logged_user.liked_books.add(uploaded_book)
-    return redirect('/books')
+    return redirect(f'/books/{id}')
 
+def remove_favoraite(request, id):
+    user = User.objects.filter(id = request.session['id'])
+    if user: 
+        logged_user = user[0]
+        uploaded_book = Book.objects.get(id =id)
+        logged_user.liked_books.remove(uploaded_book)
+    return redirect(f'/books/{id}')
+
+def show_user_profile(request):
+    user = User.objects.get(id = request.session['id'])
+    context ={
+        'user' : user,
+        'liked_books' : user.liked_books.all(),
+    }
+    return render(request, 'user.html', context)
