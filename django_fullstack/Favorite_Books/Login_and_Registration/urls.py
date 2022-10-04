@@ -1,4 +1,4 @@
-"""The_Wall URL Configuration
+"""Login_and_Registration URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -17,5 +17,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('login_app.urls')),
-    path('wall/', include('new_wall.urls')),
+    path('books/', include('favorite_books_app.urls')),
 ]
